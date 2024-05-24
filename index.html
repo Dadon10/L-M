@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Life and Mental Health Forum</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e8f4f8;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        header {
+            background-color: #1e90ff;
+            color: white;
+            text-align: center;
+            padding: 1.5em 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        header h1 {
+            margin: 0.5em 0;
+        }
+        header p {
+            margin: 0;
+        }
+        main {
+            padding: 2em;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .trending-topics {
+            margin-bottom: 3em;
+        }
+        .trending-topics h2 {
+            background-color: #ff7f50;
+            color: white;
+            padding: 0.75em;
+            border-radius: 8px 8px 0 0;
+        }
+        .trending-topics ul {
+            background-color: #fff;
+            padding: 1.5em;
+            list-style-type: none;
+            margin: 0;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .trending-topics ul li {
+            margin: 0.5em 0;
+        }
+        .trending-topics ul li a {
+            text-decoration: none;
+            color: #1e90ff;
+        }
+        .topic-section {
+            margin-bottom: 3em;
+        }
+        .topic-header {
+            background-color: #1e90ff;
+            color: white;
+            padding: 0.75em;
+            border-radius: 8px 8px 0 0;
+        }
+        .topic-body {
+            background-color: #fff;
+            padding: 1.5em;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .post-form, .comment-form {
+            margin-bottom: 2em;
+        }
+        .post-form input, .post-form textarea, .comment-form input, .comment-form textarea {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+        .post-form button, .comment-form button {
+            background-color: #1e90ff;
+            color: white;
+            padding: 0.75em 1.5em;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 10px;
+        }
+        .post-form button:hover, .comment-form button:hover {
+            background-color: #005cbf;
+        }
+        .post {
+            background-color: #fff;
+            padding: 1.5em;
+            margin-bottom: 2em;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .post h3 {
+            margin-top: 0;
+        }
+        .post p {
+            white-space: pre-wrap;
+        }
+        .comments {
+            margin-top: 1.5em;
+            padding-left: 1.5em;
+            border-left: 4px solid #ccc;
+        }
+        .comment {
+            background-color: #f9f9f9;
+            padding: 1em;
+            margin-bottom: 1em;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Life and Mental Health Forum</h1>
+        <p>Share your personal experiences and offer support to others</p>
+    </header>
+    <main>
+        <section class="trending-topics">
+            <h2>Trending Topics</h2>
+            <ul>
+                <li><a href="#family-issues">Family Issues</a></li>
+                <li><a href="#self-doubt">Self-Doubt</a></li>
+                <li><a href="#relationships">Relationships</a></li>
+                <li><a href="#mental-health">Mental Health</a></li>
+            </ul>
+        </section>
+        <section id="family-issues" class="topic-section">
+            <div class="topic-header">
+                <h2>Family Issues</h2>
+            </div>
+            <div class="topic-body">
+                <section class="post-form">
+                    <h3>Share Your Story</h3>
+                    <input type="text" id="family-title" placeholder="Title" required>
+                    <textarea id="family-content" rows="5" placeholder="Your story..." required></textarea>
+                    <button onclick="submitPost('family')">Submit</button>
+                </section>
+                <section id="family-posts">
+                    <!-- Family posts will be dynamically added here -->
+                </section>
+            </div>
+        </section>
+        <section id="self-doubt" class="topic-section">
+            <div class="topic-header">
+                <h2>Self-Doubt</h2>
+            </div>
+            <div class="topic-body">
+                <section class="post-form">
+                    <h3>Share Your Story</h3>
+                    <input type="text" id="doubt-title" placeholder="Title" required>
+                    <textarea id="doubt-content" rows="5" placeholder="Your story..." required></textarea>
+                    <button onclick="submitPost('doubt')">Submit</button>
+                </section>
+                <section id="doubt-posts">
+                    <!-- Self-doubt posts will be dynamically added here -->
+                </section>
+            </div>
+        </section>
+        <section id="relationships" class="topic-section">
+            <div class="topic-header">
+                <h2>Relationships</h2>
+            </div>
+            <div class="topic-body">
+                <section class="post-form">
+                    <h3>Share Your Story</h3>
+                    <input type="text" id="relationship-title" placeholder="Title" required>
+                    <textarea id="relationship-content" rows="5" placeholder="Your story..." required></textarea>
+                    <button onclick="submitPost('relationship')">Submit</button>
+                </section>
+                <section id="relationship-posts">
+                    <!-- Relationship posts will be dynamically added here -->
+                </section>
+            </div>
+        </section>
+        <section id="mental-health" class="topic-section">
+            <div class="topic-header">
+                <h2>Mental Health</h2>
+            </div>
+            <div class="topic-body">
+                <section class="post-form">
+                    <h3>Share Your Story</h3>
+                    <input type="text" id="mental-title" placeholder="Title" required>
+                    <textarea id="mental-content" rows="5" placeholder="Your story..." required></textarea>
+                    <button onclick="submitPost('mental')">Submit</button>
+                </section>
+                <section id="mental-posts">
+                    <!-- Mental health posts will be dynamically added here -->
+                </section>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        function submitPost(category) {
+            const titleInput = document.getElementById(`${category}-title`);
+            const contentInput = document.getElementById(`${category}-content`);
+            const title = titleInput.value;
+            const content = contentInput.value;
+
+            if (title && content) {
+                const post = document.createElement('div');
+                post.classList.add('post');
+                post.innerHTML = `
+                    <h3>${title}</h3>
+                    <p>${content}</p>
+                    <section class="comment-form">
+                        <input type="text" placeholder="Your name" class="commenter-name" required>
+                        <textarea rows="2" placeholder="Your comment..." class="comment-content" required></textarea>
+                        <button onclick="submitComment(this)">Comment</button>
+                    </section>
+                    <section class="comments">
+                        <!-- Comments will be dynamically added here -->
+                    </section>
+                `;
+
+                document.getElementById(`${category}-posts`).appendChild(post);
+
+                // Clear the form
+                titleInput.value = '';
+                contentInput.value = '';
+            }
+        }
+
+        function submitComment(button) {
+            const commentForm = button.parentElement;
+            const name = commentForm.querySelector('.commenter-name').value;
+            const content = commentForm.querySelector('.comment-content').value;
+
+            if (name && content) {
+                const comment = document.createElement('div');
+                comment.classList.add('comment');
+                comment.innerHTML = `
+                    <strong>${name}:</strong>
+                    <p>${content}</p>
+                `;
+
+                const commentsSection = commentForm.nextElementSibling;
+                commentsSection.appendChild(comment);
+
+                // Clear the comment form
+                commentForm.querySelector('.commenter-name').value = '';
+                commentForm.querySelector('.comment-content').value = '';
+            }
+        }
+    </script>
+</body>
+</html>
